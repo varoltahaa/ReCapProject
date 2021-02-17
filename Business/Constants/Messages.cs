@@ -22,10 +22,16 @@ namespace Business.Constants
         public static string UserDeleted = "Kullanıcı Başarıyla Silindi";
         public static string UserUpdated = "Kullanıcı Başarıyla Güncellendi";
         public static string UserListed = "Kullanıcılar Başarıyla Listelendi";
-        public static string UserPasswordInvalid = "Şifre 5 Karakterden Az Olamaz!";
+        public static string UserPasswordInvalid = "Şifre 8 Karakterden Az Olamaz!";
         public static string CustomerAdded = "Müşteri Başarıyla Eklendi";
         public static string CustomerDeleted = "Müşteri Başarıyla Silindi";
         public static string CustomerUpdated = "Müşteri Başarıyla Güncellendi";
         public static string CustomerListed = "Müşteriler Başarıyla Listelendi";
+        public static string BrandAdded = "Araç Markası Başarıyla Eklendi";
+        public static string BrandDeleted = "Araç Markası Başarıyla Silindi";
+        public static string BrandUpdated = "Araç Markası Başarıyla Güncellendi";
+        public static string ColorAdded = "Renk Başarıyla Eklendi";
+        public static string ColorDeleted = "Renk Başarıyla Silindi";
+        public static string ColorUpdated = "Renk Başarıyla Güncellendi";
     }
 }
