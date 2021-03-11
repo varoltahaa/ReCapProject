@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
+using Core.Business;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -23,10 +25,16 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
+            IResult result = BusinessRules.Run(CheckIfCarCountOfBrandCorrect(car.BrandId));
+
+            if (result != null)
+            {
+                return result;
+            }
             _carDal.Add(car);
 
             return new SuccessResult(Messages.CarAdded);
@@ -66,9 +74,26 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
+            IResult result = BusinessRules.Run(CheckIfCarCountOfBrandCorrect(car.BrandId));
+
+            if (result != null)
+            {
+                return result;
+            }
             _carDal.Update(car);
 
             return new SuccessResult(Messages.CarUpdated);
         }
+
+        private IResult CheckIfCarCountOfBrandCorrect(int brandId)
+        {
+            var result = _carDal.GetAll(c => c.BrandId == brandId).Count;
+            if (result >= 10)
+            {
+                return new ErrorResult(Messages.CarCountOfBrandError);
+            }
+            return new SuccessResult(); 
+        }
+
     }
 }

@@ -20,7 +20,7 @@ namespace ConsoleUI
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            userManager.Add(new User { FirstName="Kerem",LastName="Fırat",EMail="keremfırat@hotmail.com", Password="1234" });
+            //userManager.Add(new User { FirstName="Kerem",LastName="Fırat",EMail="keremfırat@hotmail.com", Password="1234" });
 
 
             
