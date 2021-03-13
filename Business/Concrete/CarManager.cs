@@ -2,6 +2,9 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Business;
 using Core.CrossCuttingConcerns.Validation;
@@ -27,6 +30,7 @@ namespace Business.Concrete
 
         [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             IResult result = BusinessRules.Run(CheckIfCarCountOfBrandCorrect(car.BrandId));
@@ -39,24 +43,31 @@ namespace Business.Concrete
 
             return new SuccessResult(Messages.CarAdded);
         }
+        [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Car car)
+        {
+            throw new NotImplementedException();
+        }
 
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
 
             return new SuccessResult(Messages.CarDeleted);
         }
-
+        [CacheAspect]
+        [PerformanceAspect(1)]
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>( _carDal.GetAll(),Messages.CarListed);
         }
-
+        [CacheAspect]
         public IDataResult<List<Car>> GetAllByBrandId(int id)
         {
             return new SuccessDataResult<List<Car>> (_carDal.GetAll(c => c.BrandId == id));
         }
-
+        [CacheAspect]
         public IDataResult<List<Car>> GetAllByColorId(int id)
         {
             return new SuccessDataResult<List<Car>> (_carDal.GetAll(c => c.ColorId == id));
@@ -72,6 +83,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetail());
         }
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             IResult result = BusinessRules.Run(CheckIfCarCountOfBrandCorrect(car.BrandId));
