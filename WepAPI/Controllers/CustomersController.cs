@@ -30,6 +30,17 @@ namespace WepAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getcustomerdetail")]
+        public IActionResult GetCarDetail()
+        {
+            var result = _customerService.GetCustomerDetail();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("add")]
         public IActionResult Add(Customer customer)
         {

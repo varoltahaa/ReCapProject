@@ -55,6 +55,17 @@ namespace WepAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getcardetail")]
+        public IActionResult GetCarDetail()
+        {
+            var result = _carService.GetCarDetail();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getalldailyprice")]
         public IActionResult GetAllDailyPrice(int min,int max)
         {
