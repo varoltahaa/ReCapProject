@@ -27,6 +27,11 @@ namespace DataAccess.Concrete.InMemory
             _cars.Add(car);
         }
 
+        public CarDetailDto CarDetailDto(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(Car car)
         {
             Car carToDelete = _cars.SingleOrDefault(c=> c.Id == car.Id);
@@ -54,6 +59,16 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public List<CarDetailDto> GetCarDetail()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDto> GetCarsDetail(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDto> GetCarsDetail(Expression<Func<Car, bool>> filter = null)
         {
             throw new NotImplementedException();
         }

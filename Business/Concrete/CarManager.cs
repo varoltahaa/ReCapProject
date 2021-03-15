@@ -78,10 +78,21 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>> (_carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max));
         }
 
+        public IDataResult<List<CarDetailDto>> GetCarDetailByColorId(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetail(c => c.ColorId == id));
+        }
+
         public IDataResult<List<CarDetailDto>> GetCarDetail()
         {
             return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetail());
         }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailByBrandId(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetail(c => c.BrandId == id));
+        }
+
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
@@ -106,6 +117,5 @@ namespace Business.Concrete
             }
             return new SuccessResult(); 
         }
-
     }
 }
