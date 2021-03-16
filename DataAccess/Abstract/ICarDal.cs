@@ -12,5 +12,7 @@ namespace DataAccess.Abstract
     {
         List<CarDetailDto> GetCarDetail();
         List<CarDetailDto> GetCarsDetail(Expression<Func<Car, bool>> filter = null);
+
+        List<CarDetailDto> GetCarById(Expression<Func<Car, bool>> filter = null);
     }
 }
