@@ -39,6 +39,10 @@
 
 **Veritabanı tabloları için oluşturulan nesneler ve Joın işlemi için oluşturaln DTO'lar bu katmanda bulunur**
 
+# ⭐ Lisans
+
+**Bu proje MIT lisansı ile lisanslanmıştır. Daha fazla bilgi için [lisans](https://github.com/varoltahaa/ReCapProject/blob/master/LICENSE) dosyasını okuyun**
+
 # ⭐ Yazar
 
 **Taha Varol** - [Linkedln](https://www.linkedin.com/in/taha-varol-8027361b4/)
