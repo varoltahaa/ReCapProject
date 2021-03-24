@@ -12,7 +12,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(c => c.Description).MinimumLength(5);
             RuleFor(c => c.DailyPrice).GreaterThan(0);
-            RuleFor(c => c.Description).Must(StartWithA);
+            //RuleFor(c => c.Description).Must(StartWithA);
             RuleFor(c => c.BrandId).NotNull();
             RuleFor(c => c.ColorId).NotNull();
 

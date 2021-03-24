@@ -41,6 +41,12 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Brand>> (_brandDal.GetAll(), Messages.BrandListed);
         }
+
+        public IDataResult<List<Brand>> GetBrandById(int id)
+        {
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(b => b.Id == id));
+        }
+
         public IResult Update(Brand brand)
         {
             IResult result = BusinessRules.Run(CheckIfBrandNameExists(brand.BrandName));
