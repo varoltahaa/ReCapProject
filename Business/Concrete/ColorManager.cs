@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Business;
 using Core.Utilities.Results;
@@ -19,7 +20,7 @@ namespace Business.Concrete
         {
             _colorDal = colorDal;
         }
-
+        [SecuredOperation("product.add,admin")]
         public IResult Add(Color color)
         {
             IResult result = BusinessRules.Run(CheckIfColorNameExists(color.ColorName));

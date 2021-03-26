@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Business;
 using Core.Utilities.Results;
@@ -19,7 +20,7 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
-
+        [SecuredOperation("product.add,admin")]
         public IResult Add(Brand brand)
         {
             IResult result = BusinessRules.Run(CheckIfBrandNameExists(brand.BrandName));
