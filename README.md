@@ -25,7 +25,7 @@
 
 [DataAccess](https://github.com/varoltahaa/ReCapProject/tree/master/DataAccess)
 
-**EntityFramework yapısını kullanıdığımız bu katman, Business katmanından geçen isteği veritabanına yönlendirir ve kullanıcı tarayıcı üzerinde istediği operasyonun karşılığını alır**
+**EntityFramework yapısını kullandığımız bu katman, Business katmanından geçen isteği veritabanına yönlendirir ve kullanıcı tarayıcı üzerinde istediği operasyonun karşılığını alır**
 
 <h3> ✔ Core Katmanı</h3>
 
