@@ -37,7 +37,7 @@
 
 [Entities](https://github.com/varoltahaa/ReCapProject/tree/master/Entities)
 
-**Veritabanı tabloları için oluşturulan nesneler ve Joın işlemi için oluşturaln DTO'lar bu katmanda bulunur**
+**Veritabanı tabloları için oluşturulan nesneler ve Joın işlemi için oluşturulan DTO'lar bu katmanda bulunur**
 
 # ⭐ Lisans
 
