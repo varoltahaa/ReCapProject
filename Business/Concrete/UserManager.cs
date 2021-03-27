@@ -2,6 +2,7 @@
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -27,6 +28,11 @@ namespace Business.Concrete
         public void Add(User user)
         {
             _userDal.Add(user);
+        }
+
+        public IDataResult<User> GetByMaill(string email)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(c => c.Email == email));
         }
 
         public User GetByMail(string email)
