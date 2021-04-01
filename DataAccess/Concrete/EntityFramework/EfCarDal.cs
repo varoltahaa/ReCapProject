@@ -51,7 +51,16 @@ namespace DataAccess.Concrete.EntityFramework
                                  Description = c.Description,
                                  BrandName = b.BrandName,
                                  ColorName = co.ColorName,
-                                 DailyPrice = c.DailyPrice
+                                 DailyPrice = c.DailyPrice,
+                                 ImagePath = (from i in context.CarImages
+                                              where i.CarId == c.Id
+                                              select new CarImage
+                                              {
+                                                  Id = i.Id,
+                                                  CarId = i.CarId,
+                                                  ImagePath = i.ImagePath,
+                                                  Date = i.Date
+                                              }).ToList()
 
                              };
                 return result.ToList();
@@ -75,7 +84,16 @@ namespace DataAccess.Concrete.EntityFramework
                                  DailyPrice = p.DailyPrice,
                                  Description = p.Description,
                                  ModelYear = p.ModelYear,
-                                 Id = p.Id
+                                 Id = p.Id,
+                                 ImagePath = (from i in context.CarImages
+                                              where i.CarId == c.Id
+                                              select new CarImage
+                                              {
+                                                  Id = i.Id,
+                                                  CarId = i.CarId,
+                                                  ImagePath = i.ImagePath,
+                                                  Date = i.Date
+                                              }).ToList()
                              };
                 return result.ToList();
             }

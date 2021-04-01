@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Entities.DTOs
         public string ColorName { get; set; }
         public string ModelYear { get; set; }
         public int DailyPrice { get; set; }
+        public List<CarImage> ImagePath { get; set; }
         public string Description { get; set; }
 
 
